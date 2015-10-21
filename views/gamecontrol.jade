@@ -1,0 +1,34 @@
+extends layout
+block body
+    div(ng-controller="AppCtrl")
+        div.container
+            h1 Escape Game Control
+            .row.top-buffer
+                form(ng-submit='SendMessage()')
+                    .col-md-12
+                        textarea(size='100', ng-model='message').form-control
+                    .col-md-2.top-buffer
+                        input(type='submit', value='Send message').form-control.btn.btn-default
+            hr
+            .row.top-buffer
+                form(ng-submit='SetTimer()')
+                    div.col-md-2
+                        input(type='submit', value='Set timer').btn.btn-default
+                    div.col-md-1
+                        input(type='number', ng-model='timer_init_val').form-control
+            hr
+            div.row.top-buffer
+                div.col-md-2
+                    form(ng-submit='StartTimer()')
+                        input(type='submit', value='Start timer').btn.btn-default
+                div.col-md-2
+                    form(ng-submit='StopTimer()')
+                        input(type='submit', value='Stop timer').btn.btn-default
+
+        div.container
+            hr
+            h3 History
+                .row.col-lg-12
+                    div(ng-repeat="message in messages.slice().reverse() track by $index")
+                            a(ng-click='LoadMessage(message)') {{message}}
+

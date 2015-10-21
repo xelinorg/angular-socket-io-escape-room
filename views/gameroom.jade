@@ -1,0 +1,15 @@
+extends layout
+block body
+    div(style="text-align:center")
+        h1 Escape Game Room
+        div(ng-controller='TimerCtrl')
+            timer(
+                style="font-size:xx-large;"
+                ng-style="myStyle"
+                autostart="false"
+                max-time-unit="minute"
+                interval="1000"
+                countdown="1"
+                )
+                p {{hhours}} hour{{hoursS}} {{mminutes}} minute{{minutesS}}, {{sseconds}} second{{secondsS}}
+        div(ng-controller='GameCtrl' style="font-size:xx-large;") {{message}}
